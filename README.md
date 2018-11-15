@@ -35,3 +35,6 @@
   `
 - npm install 
 - npm run dev
+
+#### 感谢
+- 感谢[中文诗歌（chinese-poetry）](https://github.com/chinese-poetry/chinese-poetry)的辛苦整理
