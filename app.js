@@ -1,8 +1,8 @@
-const route = require('./route')
+const route = require('./src/route')
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 
-const db = require('./db')
+const db = require('./src/db')
 const app = new Koa()
 
 app.use(bodyParser())
