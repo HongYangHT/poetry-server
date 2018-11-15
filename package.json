@@ -1,0 +1,32 @@
+{
+  "name": "poetry-server",
+  "version": "1.0.0",
+  "description": "server for poetry",
+  "main": "index.js",
+  "scripts": {
+    "test": ".",
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "koa2",
+    "nodejs",
+    "mongodb",
+    "mysql"
+  ],
+  "author": "sam.hongyang",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
