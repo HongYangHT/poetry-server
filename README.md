@@ -8,7 +8,7 @@
 - [sequelize](https://github.com/demopark/sequelize-docs-Zh-CN)
 
 #### 架构设计
-`
+```
   |--config #相关配置
   |--src
   |  |----controllers #操作层
@@ -25,7 +25,7 @@
   |--app.js #程序入口文件
   |--package.json
   |--README.md
-`
+```
 
 #### 启动
 - 确认已安装mysql数据库
