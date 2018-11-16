@@ -34,7 +34,9 @@
   mkdir poetry-server && cd poetry-server && git clone https://github.com/HongYangHT/poetry-server.git
   `
 - npm install 
+- npm init initdb
 - npm run dev
 
 #### 感谢
 - 感谢[中文诗歌（chinese-poetry）](https://github.com/chinese-poetry/chinese-poetry)的辛苦整理
+- 感谢[KomaBeyond 提供的转化工具(chinese-poetry-mysql)](https://github.com/KomaBeyond/chinese-poetry-mysql)
