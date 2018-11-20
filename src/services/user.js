@@ -1,3 +1,10 @@
+/*
+ * @Author: sam.hongyang
+ * @LastEditors: sam.hongyang
+ * @Description: 
+ * @Date: 2018-11-14 17:44:06
+ * @LastEditTime: 2018-11-20 17:11:27
+ */
 const User = require('../models/user')
 
 exports.getUsers = async (query) => {
