@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 词表
  * @Date: 2018-11-20 17:48:42
- * @LastEditTime: 2018-11-20 18:02:08
+ * @LastEditTime: 2018-11-20 18:05:17
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -12,6 +12,7 @@ const Poem = require('./poem')
 const PoemAuthor = sequelize.define('poem-author', {
   id: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
     autoIncrement: true
   },
   name: {

@@ -30,6 +30,7 @@
 #### 启动
 - 确认已安装mysql数据库
 - 下载当前代码到本地
+  
   `
   mkdir poetry-server && cd poetry-server && git clone https://github.com/HongYangHT/poetry-server.git
   `
