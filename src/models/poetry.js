@@ -3,14 +3,16 @@
  * @LastEditors: sam.hongyang
  * @Description: 诗表
  * @Date: 2018-11-20 17:21:52
- * @LastEditTime: 2018-11-20 17:43:29
+ * @LastEditTime: 2018-11-21 15:03:12
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
 
-const Poetry = sequelize.define('poetry', {
+const Poetry = sequelize.define('poetrys', {
   id: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
   },
   poetry_author_id: {
     type: Sequelize.INTEGER
@@ -29,6 +31,14 @@ const Poetry = sequelize.define('poetry', {
   },
   dynasty: {
     type: Sequelize.CHAR(1)
+  },
+  created_at: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
+  },
+  updated_at: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
   }
 })
 

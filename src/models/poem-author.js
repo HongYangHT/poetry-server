@@ -3,13 +3,13 @@
  * @LastEditors: sam.hongyang
  * @Description: 词表
  * @Date: 2018-11-20 17:48:42
- * @LastEditTime: 2018-11-20 18:05:17
+ * @LastEditTime: 2018-11-21 11:57:02
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
 const Poem = require('./poem')
 
-const PoemAuthor = sequelize.define('poem-author', {
+const PoemAuthor = sequelize.define('poem-authors', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -23,6 +23,14 @@ const PoemAuthor = sequelize.define('poem-author', {
   },
   intro_s: {
     type: Sequelize.TEXT
+  },
+  created_at: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
+  },
+  updated_at: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
   }
 })
 

@@ -3,29 +3,38 @@
  * @LastEditors: sam.hongyang
  * @Description: 
  * @Date: 2018-11-14 17:44:06
- * @LastEditTime: 2018-11-20 17:11:27
+ * @LastEditTime: 2018-11-21 17:11:39
  */
 const User = require('../models/user')
 
 exports.getUsers = async (query) => {
   let result = null
+  let {
+    currentPage = 1, pageSize = 10, name = ''
+  } = query
   try {
-    result = await User.findAndCountAll()
-  } catch (error) {
-    throw new Error(error)
-  }
-  return result
-}
-
-exports.addUser = async (query) => {
-  let user = null
-  try {
-    user = await User.create({
-      name: 'hongyang',
-      nickname: 'sam'
+    result = await User.findAndCountAll({
+      attributes: {
+        exclude: ['password']
+      },
+      where: {
+        $or: {
+          name: {
+            $like: `%${name}%`
+          },
+          nickname: {
+            $like: `%${name}%`
+          }
+        }
+      },
+      offset: (currentPage - 1) * pageSize,
+      limit: pageSize,
+      order: [
+        ['created_at', 'DESC']
+      ]
     })
   } catch (error) {
     throw new Error(error)
   }
-  return user
+  return result
 }

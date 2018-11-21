@@ -3,13 +3,13 @@
  * @LastEditors: sam.hongyang
  * @Description: model for user auth
  * @Date: 2018-11-16 16:55:21
- * @LastEditTime: 2018-11-16 17:55:44
+ * @LastEditTime: 2018-11-21 11:57:11
  */
 
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
 
-const Auth = sequelize.define('auth', {
+const Auth = sequelize.define('auths', {
   id: {
     type: Sequelize.UUID,
     primaryKey: true,
@@ -17,6 +17,14 @@ const Auth = sequelize.define('auth', {
   },
   openId: {
     type: Sequelize.UUID
+  },
+  created_at: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
+  },
+  updated_at: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
   }
 })
 

@@ -1,28 +1,47 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 
+ * @Description: 用户
  * @Date: 2018-11-14 17:43:57
- * @LastEditTime: 2018-11-20 17:10:46
+ * @LastEditTime: 2018-11-21 17:22:53
  */
 const UserServices = require('../services/user')
+const Joi = require('joi')
 
-exports.getUsers = async (params) => {
+/**
+ * @description 查询用户信息
+ * @author sam.hongyang
+ * @param  {} ctx
+ * @param  {} next
+ */
+exports.getUsers = async (ctx, next) => {
   let result = null
+  const schema = Joi.object().keys({
+    name: Joi.string().regex(/^[a-zA-Z0-9_@$^x00-xff]+$/),
+    pageSize: Joi.number().integer(),
+    currentPage: Joi.number().integer()
+  })
+  let { currentPage = 1, pageSize = 10, name = '' } = ctx.request.query
+  Joi.validate({
+    name,
+    pageSize,
+    currentPage
+  }, schema, (err, value) => {
+    if (err) {
+      ctx.status = 401
+      throw new Error(err)
+    }
+  })
+  currentPage = parseInt(currentPage)
+  pageSize = parseInt(pageSize)
   try {
-    result = await UserServices.getUsers()
+    result = await UserServices.getUsers({
+      currentPage,
+      pageSize,
+      name
+    })
   } catch (error) {
     throw new Error(error)
   }
   return result
-}
-
-exports.addUser = async (params) => {
-  let user = null
-  try {
-    user = await UserServices.addUser()
-  } catch (error) {
-    throw new Error(error)
-  }
-  return user
 }

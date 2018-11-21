@@ -2,7 +2,7 @@
   "name": "poetry-server",
   "version": "1.0.0",
   "description": "server for poetry",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": ".",
     "dev": "node app.js",
@@ -21,9 +21,11 @@
   "author": "sam.hongyang",
   "license": "ISC",
   "dependencies": {
+    "joi": "^14.1.0",
     "knex": "^0.15.2",
     "koa": "^2.6.1",
     "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "mysql2": "^1.6.4",
     "sequelize": "^4.41.2"
