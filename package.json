@@ -21,6 +21,7 @@
   "author": "sam.hongyang",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "joi": "^14.1.0",
     "knex": "^0.15.2",
     "koa": "^2.6.1",

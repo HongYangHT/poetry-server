@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 用户
  * @Date: 2018-11-14 17:43:57
- * @LastEditTime: 2018-11-21 17:22:53
+ * @LastEditTime: 2018-11-21 18:27:00
  */
 const UserServices = require('../services/user')
 const Joi = require('joi')
@@ -17,13 +17,11 @@ const Joi = require('joi')
 exports.getUsers = async (ctx, next) => {
   let result = null
   const schema = Joi.object().keys({
-    name: Joi.string().regex(/^[a-zA-Z0-9_@$^x00-xff]+$/),
     pageSize: Joi.number().integer(),
     currentPage: Joi.number().integer()
   })
   let { currentPage = 1, pageSize = 10, name = '' } = ctx.request.query
   Joi.validate({
-    name,
     pageSize,
     currentPage
   }, schema, (err, value) => {
