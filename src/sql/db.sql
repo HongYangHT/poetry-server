@@ -4,8 +4,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE users (
   `id` varchar(60) not null primary key,
-  `name` varchar(20) not null,
-  `password` varchar(20) not null,
+  `name` varchar(60) not null,
+  `password` varchar(60) not null,
   `nickname` varchar(20),
   `avatar` varchar(120),
   `gender` int(1) NOT NULL DEFAULT 0,

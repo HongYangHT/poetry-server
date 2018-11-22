@@ -3,10 +3,9 @@
  * @LastEditors: sam.hongyang
  * @Description: 格式化请求返回
  * @Date: 2018-11-21 15:21:18
- * @LastEditTime: 2018-11-21 15:36:33
+ * @LastEditTime: 2018-11-22 16:30:53
  */
-exports.success = (data = {},
-  code = 0, message) => {
+exports.success = (data = {}, message, code = 0) => {
   return {
     code,
     message,
