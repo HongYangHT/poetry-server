@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 
  * @Date: 2018-11-14 16:15:13
- * @LastEditTime: 2018-11-23 16:24:37
+ * @LastEditTime: 2018-11-23 18:28:24
  */
 const user = require('koa-router')()
 const UserController = require('../../controllers/user')
@@ -11,6 +11,8 @@ const FormatResponse = require('../../utils/format-response')
 const MappingCode = require('../../utils/mapping-code')
 const Message = require('../../utils/message')
 const Joi = require('joi')
+const jsonwebtoken = require('jsonwebtoken')
+const config = require('../../../config')
 
 /**
  * @description 查询用户
@@ -123,7 +125,11 @@ user.post('/login', async (ctx, next) => {
       password
     }, schema)
     let result = await UserController.login(ctx, next)
-    ctx.body = FormatResponse.success(result, Message.LOGIN_IN_SUCCESS)
+    let token = jsonwebtoken.sign({
+      data: result,
+      exp: Math.floor(Date.now() / 1000) + (60 * 60) // 一个小时
+    }, config.JWT_SECRET)
+    ctx.body = FormatResponse.success(Object.assign(result, { token }), Message.LOGIN_IN_SUCCESS)
   } catch (error) {
     ctx.status = 400
     if (error.details && error.details.length && error.details[0].path && error.details[0].path.length) {
@@ -180,6 +186,8 @@ user.get('/fetch/:id', async (ctx, next) => {
         ctx.body = FormatResponse.error(error)
       }
     }
+  } finally {
+    next()
   }
 })
 

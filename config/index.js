@@ -11,5 +11,6 @@ module.exports = {
   DB_DATABASE_NAME: 'test',
   DB_DATABASE_USERNAME: 'root',
   DB_DATABASE_PASSWORD: 'root',
-  DB_DATABASE_CHARSET: 'utf8mb4'
+  DB_DATABASE_CHARSET: 'utf8mb4',
+  JWT_SECRET: 'CD$JY411502!@*'
 }
