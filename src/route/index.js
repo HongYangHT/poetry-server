@@ -1,3 +1,10 @@
+/*
+ * @Author: sam.hongyang
+ * @LastEditors: sam.hongyang
+ * @Description: 路由设置
+ * @Date: 2018-11-14 14:40:46
+ * @LastEditTime: 2018-11-16 17:56:13
+ */
 
 const V1 = require('./route-v1')
 const V2 = require('./route-v2')
