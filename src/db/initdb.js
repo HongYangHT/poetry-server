@@ -1,9 +1,9 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 初始化数据库
+ * @Description: 初始化数据库，建表
  * @Date: 2018-11-15 16:20:47
- * @LastEditTime: 2018-11-16 17:55:10
+ * @LastEditTime: 2018-11-23 16:31:22
  */
 const fs = require('fs')
 const path = require('path')

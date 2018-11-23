@@ -3,10 +3,14 @@
  * @LastEditors: sam.hongyang
  * @Description: 
  * @Date: 2018-11-14 17:44:06
- * @LastEditTime: 2018-11-21 18:28:48
+ * @LastEditTime: 2018-11-23 16:28:58
  */
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const {
+  omit
+} = require('lodash')
+const MappingCode = require('../utils/mapping-code')
 const saltRounds = 10
 /**
  * @description 分页查询用户
@@ -53,7 +57,10 @@ exports.getUsers = async (params) => {
  * @param  {} params
  */
 exports.createUser = async (params) => {
-  let { name, password } = params
+  let {
+    name,
+    password
+  } = params
   let result = null
   let salt = bcrypt.genSaltSync(saltRounds)
   password = bcrypt.hashSync(password, salt)
@@ -67,9 +74,60 @@ exports.createUser = async (params) => {
       }
     }).spread((user, created) => {
       if (!created) {
-        throw new Error('user is already exist!')
+        throw new Error(`[${MappingCode.USER.EXIST}]: user is already exist!`)
       }
     })
+  } catch (error) {
+    throw new Error(error)
+  }
+  return result
+}
+/**
+ * @description 用户登录
+ * @author sam.hongyang
+ * @param  {} params
+ */
+exports.login = async (params) => {
+  let {
+    name,
+    password
+  } = params
+  let result = null
+  try {
+    let user = await User.findOne({
+      where: {
+        name
+      }
+    })
+    if (user) {
+      let pass = await bcrypt.compareSync(password, user.password)
+      if (pass) {
+        result = omit(JSON.parse(JSON.stringify(user)), ['password'])
+      } else {
+        throw new Error(`[${MappingCode.USER.PASSWORD_WRONG}]: user password is wrong !`)
+      }
+    } else {
+      throw new Error(`[${MappingCode.USER.NOT_EXIST}]: user is not exist !`)
+    }
+  } catch (error) {
+    throw new Error(error)
+  }
+  return result
+}
+/**
+ * @description 查询某个用户
+ * @author sam.hongyang
+ * @param  {} params
+ */
+exports.getUserById = async (params) => {
+  let { id } = params
+  let result = null
+  try {
+    let user = await User.findById(id)
+    if (!user) {
+      throw new Error(`[${MappingCode.USER.NOT_EXIST}]: user is not exist !`)
+    }
+    result = omit(JSON.parse(JSON.stringify(user)), ['password'])
   } catch (error) {
     throw new Error(error)
   }
