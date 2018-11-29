@@ -8,7 +8,9 @@
 const router = require('koa-router')()
 
 const user = require('./user')
+const poetry = require('./poetry')
 
 router.use('/u', user.routes(), user.allowedMethods())
+router.use('/pty', poetry.routes(), poetry.allowedMethods())
 
 module.exports = router

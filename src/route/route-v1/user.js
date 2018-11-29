@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 
  * @Date: 2018-11-14 16:15:13
- * @LastEditTime: 2018-11-23 18:28:24
+ * @LastEditTime: 2018-11-28 10:57:45
  */
 const user = require('koa-router')()
 const UserController = require('../../controllers/user')
@@ -39,7 +39,22 @@ user.get('/user', async (ctx, next) => {
     let result = await UserController.getUsers(ctx, next)
     ctx.body = FormatResponse.success(result, Message.FETCH_SUCCESS)
   } catch (error) {
-    ctx.body = FormatResponse.error(error)
+    ctx.status = 400
+    if (error.details && error.details.length && error.details[0].path && error.details[0].path.length) {
+      let type = error.details[0].type
+      let path = error.details[0].path[0]
+      ctx.body = FormatResponse.error(error, MappingCode[path][type])
+    } else {
+      let code = null
+      code = Object.keys(MappingCode.USER).find(item => {
+        return error.message.includes(MappingCode.USER[item])
+      })
+      if (code) {
+        ctx.body = FormatResponse.error(error, MappingCode.USER[code])
+      } else {
+        ctx.body = FormatResponse.error(error)
+      }
+    }
   } finally {
     next()
   }
