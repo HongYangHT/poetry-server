@@ -2,20 +2,22 @@
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
  * @Description: 
- * @Date: 2018-11-28 09:35:37
- * @LastEditTime: 2018-11-29 15:28:20
+ * @Date: 2018-11-29 15:37:43
+ * @LastEditTime: 2018-11-29 15:41:52
  */
-const PoetryAuthor = require('../models/poetry-author')
+const PoemAuthor = require('../models/poem-author')
 const MappingCode = require('../utils/mapping-code')
 /**
  * @description 根据id查询
  * @param  {} params
  */
 exports.fetchAuthorByIds = async (params) => {
-  let { ids } = params
+  let {
+    ids
+  } = params
   let result = null
   try {
-    result = await PoetryAuthor.findAll({
+    result = await PoemAuthor.findAll({
       where: {
         id: {
           $in: ids
@@ -57,7 +59,7 @@ exports.findAuthor = async (params) => {
     }
   }
   try {
-    result = await PoetryAuthor.findAndCountAll(options)
+    result = await PoemAuthor.findAndCountAll(options)
   } catch (error) {
     throw new Error(error)
   }
@@ -70,10 +72,12 @@ exports.findAuthor = async (params) => {
  * @param  {} params
  */
 exports.findAuthorById = async (params) => {
-  let { id } = params
+  let {
+    id
+  } = params
   let result = null
   try {
-    result = await PoetryAuthor.findById(id)
+    result = await PoemAuthor.findById(id)
   } catch (error) {
     throw new Error(error)
   }

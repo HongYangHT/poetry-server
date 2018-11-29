@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 诗经表
  * @Date: 2018-11-20 17:54:46
- * @LastEditTime: 2018-11-27 10:04:35
+ * @LastEditTime: 2018-11-29 17:39:51
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -46,3 +46,5 @@ const ShiJing = sequelize.define('shijings', {
 ShiJing.sync({
   force: false
 }).then(() => console.log('SUCCESS CREATE TABLE SHIJING')).catch(err => console.log(err))
+
+module.exports = ShiJing

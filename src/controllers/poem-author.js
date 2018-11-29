@@ -2,10 +2,10 @@
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
  * @Description: 
- * @Date: 2018-11-28 09:53:18
- * @LastEditTime: 2018-11-29 15:23:43
+ * @Date: 2018-11-29 15:42:17
+ * @LastEditTime: 2018-11-29 15:45:16
  */
-const PoetryAuthorService = require('../services/poetry-author')
+const PoemAuthorService = require('../services/poem-author')
 /**
  * @description 模糊查询
  * @author sam.hongyang
@@ -15,10 +15,14 @@ const PoetryAuthorService = require('../services/poetry-author')
 exports.findAuthor = async (ctx, next) => {
   let result = null
   try {
-    let { name, pageSize = 10, currentPage = 1 } = ctx.request.query
+    let {
+      name,
+      pageSize = 10,
+      currentPage = 1
+    } = ctx.request.query
     pageSize = parseInt(pageSize)
     currentPage = parseInt(currentPage)
-    result = PoetryAuthorService.findAuthor({
+    result = PoemAuthorService.findAuthor({
       name,
       pageSize,
       currentPage
@@ -36,9 +40,13 @@ exports.findAuthor = async (ctx, next) => {
  */
 exports.findAuthorById = async (ctx, next) => {
   let result = null
-  let { id } = ctx.params
+  let {
+    id
+  } = ctx.params
   try {
-    result = PoetryAuthorService.findAuthorById({ id })
+    result = PoemAuthorService.findAuthorById({
+      id
+    })
   } catch (error) {
     throw new Error(error)
   }

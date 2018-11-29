@@ -1,12 +1,12 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 用于处理诗词DAO
- * @Date: 2018-11-26 17:01:02
- * @LastEditTime: 2018-11-29 15:28:16
+ * @Description: 
+ * @Date: 2018-11-29 15:37:30
+ * @LastEditTime: 2018-11-29 15:41:09
  */
-const Poetry = require('../models/poetry')
-const PoetryAuthor = require('../models/poetry-author')
+const Poem = require('../models/poem')
+const PoemAuthor = require('../models/poem-author')
 const MappingCode = require('../utils/mapping-code')
 const Sequelize = require('sequelize')
 const sequelize = require('../db/index')
@@ -19,16 +19,18 @@ const sequelize = require('../db/index')
  * ORDER BY id LIMIT 1;
  * order by ramdon
  */
-exports.promotePoetry = async (params) => {
-  let { size = 4 } = params
+exports.promotePoem = async (params) => {
+  let {
+    size = 4
+  } = params
   let result = null
   try {
-    result = await sequelize.query(`SELECT * FROM poetrys WHERE id >= (SELECT floor(RAND() * ((SELECT MAX(id) FROM
-      poetrys) - (SELECT MIN(id) FROM 
-      poetrys)) + (SELECT MIN(id) FROM 
-      poetrys))) ORDER BY id LIMIT ${size} `, {
-        type: sequelize.QueryTypes.SELECT
-      })
+    result = await sequelize.query(`SELECT * FROM poems WHERE id >= (SELECT floor(RAND() * ((SELECT MAX(id) FROM
+      poems) - (SELECT MIN(id) FROM 
+      poems)) + (SELECT MIN(id) FROM 
+      poems))) ORDER BY id LIMIT ${size} `, {
+      type: sequelize.QueryTypes.SELECT
+    })
   } catch (error) {
     throw new Error(error)
   }
@@ -39,8 +41,10 @@ exports.promotePoetry = async (params) => {
  * @author sam.hongyang
  * @param  {} params
  */
-exports.getAuthorByPoetry = async (params) => {
-  let { rank = 6 } = params
+exports.getAuthorByPoem = async (params) => {
+  let {
+    rank = 6
+  } = params
   let result = null
   try {
     /**
@@ -51,10 +55,12 @@ exports.getAuthorByPoetry = async (params) => {
      * GROUP BY `poetry_author_id`
      * ORDER BY count('poetry_author_id') DESC LIMIT 6;
      */
-    result = await Poetry.findAll({
-      attributes: ['poetry_author_id', [Sequelize.fn('count', 'poetry_author_id'), 'total']],
-      group: ['poetry_author_id'],
-      order: [[Sequelize.fn('count', 'poetry_author_id'), 'desc']],
+    result = await Poem.findAll({
+      attributes: ['poem_author_id', [Sequelize.fn('count', 'poem_author_id'), 'total']],
+      group: ['poem_author_id'],
+      order: [
+        [Sequelize.fn('count', 'poem_author_id'), 'desc']
+      ],
       limit: rank,
       raw: true
     })
@@ -68,13 +74,15 @@ exports.getAuthorByPoetry = async (params) => {
  * @author sam.hongyang
  * @param  {} params
  */
-exports.findPoetryById = async (params) => {
-  let { id } = params
+exports.findPoemById = async (params) => {
+  let {
+    id
+  } = params
   let result = null
   try {
-    result = await Poetry.findById(id, {
+    result = await Poem.findById(id, {
       include: [{
-        model: PoetryAuthor
+        model: PoemAuthor
       }]
     })
   } catch (error) {
@@ -88,7 +96,7 @@ exports.findPoetryById = async (params) => {
  * @author sam.hongyang
  * @param  {} params
  */
-exports.findPoetry = async (params) => {
+exports.findPoem = async (params) => {
   let {
     like,
     pageSize = 10,
@@ -114,7 +122,7 @@ exports.findPoetry = async (params) => {
     }
   }
   try {
-    result = await Poetry.findAndCountAll(options)
+    result = await Poem.findAndCountAll(options)
   } catch (error) {
     throw new Error(error)
   }

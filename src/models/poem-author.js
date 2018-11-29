@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 词表
  * @Date: 2018-11-20 17:48:42
- * @LastEditTime: 2018-11-27 15:36:25
+ * @LastEditTime: 2018-11-29 15:57:00
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')

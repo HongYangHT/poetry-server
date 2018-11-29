@@ -36,8 +36,8 @@ CREATE TABLE poetry_authors (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT="诗人";
 
-DROP TABLE IF EXISTS `poems_authors`;
-CREATE TABLE poems_authors (
+DROP TABLE IF EXISTS `poem_authors`;
+CREATE TABLE poem_authors (
   `id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `name` varchar(255) NOT NULL,
   `intro_l` text DEFAULT null,
@@ -49,7 +49,7 @@ CREATE TABLE poems_authors (
 DROP TABLE IF EXISTS `poems`;
 CREATE TABLE poems (
   `id` int(11) NOT NULL PRIMARY KEY auto_increment,
-  `poems_author_id` int(11) DEFAULT 0,
+  `poem_author_id` int(11) DEFAULT 0,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `author` varchar(255) NOT NULL,
