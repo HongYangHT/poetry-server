@@ -3,14 +3,32 @@
  * @LastEditors: sam.hongyang
  * @Description: 服务调用返回code mapping
  * @Date: 2018-11-22 16:17:02
- * @LastEditTime: 2018-11-23 16:25:25
+ * @LastEditTime: 2018-11-29 17:30:39
  */
 
 module.exports = {
-  USER: {
+  ['USER']: {
     ['EXIST']: 100000, // 用户已存在
     ['NOT_EXIST']: 200000, // 用户不存在
     ['PASSWORD_WRONG']: 200001 // 用户密码错误
+  },
+  ['POETRY']: {
+    ['NOT_EXIST']: 200002 // 诗歌不存在
+  },
+  ['POEM']: {
+    ['NOT_EXIST']: 200003 // 词不存在
+  },
+  ['POETRYAUTHOR']: {
+    ['NOT_EXIST']: 200004 // 诗人不存在
+  },
+  ['POEMAUTHOR']: {
+    ['NOT_EXIST']: 200005 // 词人不存在
+  },
+  ['LUNYU']: {
+    ['NOT_EXIST']: 200006 // 内容不存在
+  },
+  ['SHIJING']: {
+    ['NOT_EXIST']: 200007 // 内容不存在
   },
   name: {
     ['string.regex.base']: 100001, // 用户名非法，不是使用邮箱或者手机号码
@@ -23,5 +41,17 @@ module.exports = {
   },
   id: {
     ['any.empty']: 100021 // 传入参数为空
+  },
+  size: {
+    ['number.base']: 100014 // 不是数字
+  },
+  rank: {
+    ['number.base']: 100015 // 不是数字
+  },
+  pageSize: {
+    ['number.base']: 100016 // 不是数字
+  },
+  currentPage: {
+    ['number.base']: 100017 // 不是数字
   }
 }
