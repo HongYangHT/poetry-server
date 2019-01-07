@@ -3,12 +3,16 @@
  * @LastEditors: sam.hongyang
  * @Description: 数据库链接操作
  * @Date: 2018-11-14 17:15:32
- * @LastEditTime: 2018-11-21 15:15:59
+ * @LastEditTime: 2019-01-07 16:00:53
  */
 
 const Sequelize = require('sequelize')
 const config = require('../../config')
 const Op = Sequelize.Op
+const {
+  dbLogger,
+  outLogger
+} = require('../utils/logger')
 const operatorsAliases = {
   $eq: Op.eq,
   $ne: Op.ne,
@@ -62,6 +66,9 @@ const sequelize = new Sequelize(config.DB_DATABASE_NAME, config.DB_DATABASE_USER
     timestamps: true, // 加入相关的事件戳，如createdAt、updatedAt
     // paranoid: true, // 偏执模式，删除数据时不会进行物理删除，而是设置deletedAt为当前时间
     freezeTableName: true // 自定义表名
+  },
+  logging: msg => {
+    dbLogger.info(msg)
   }
 })
 

@@ -29,11 +29,13 @@
     "koa-bodyparser": "^4.2.1",
     "koa-helmet": "^4.0.0",
     "koa-jwt": "^3.5.1",
+    "koa-log4": "^2.3.2",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "mysql2": "^1.6.4",
+    "pm2": "^3.2.4",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {

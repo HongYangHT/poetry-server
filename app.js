@@ -3,13 +3,17 @@
  * @LastEditors: sam.hongyang
  * @Description: 入口文件
  * @Date: 2018-11-14 14:31:17
- * @LastEditTime: 2018-11-26 17:00:13
+ * @LastEditTime: 2019-01-07 16:10:05
  */
 const route = require('./src/route')
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
-const logger = require('koa-logger')
+// const logger = require('koa-logger')
 const helmet = require('koa-helmet')
+
+const {
+   httpLogger
+} = require('./src/utils/logger')
 
 const db = require('./src/db')
 const errorHandle = require('./src/middleware/error-handle')
@@ -19,6 +23,7 @@ const config = require('./config')
 const app = new Koa()
 
 app.use(errorHandle)
+
 app.use(jwt({
    secret: config.JWT_SECRET
 }).unless({
@@ -27,10 +32,15 @@ app.use(jwt({
 
 app.use(helmet())
 app.use(bodyParser())
-app.use(logger())
+// app.use(logger())
 app.use(route.routes())
    .use(route.allowedMethods())
    
+/**
+ * 记录请求日志到文件中
+ */
+app.use(httpLogger())
+
 app.listen(8099)
 
 console.log('[poetry] starting in port 8099')
