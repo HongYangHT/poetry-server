@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 
  * @Date: 2018-11-14 16:15:13
- * @LastEditTime: 2019-01-09 16:35:17
+ * @LastEditTime: 2019-01-09 17:00:11
  */
 const user = require('koa-router')()
 const UserController = require('../../controllers/user')
@@ -115,6 +115,19 @@ user.get('/user', async (ctx, next) => {
  * @param  {} ctx
  * @param  {} next
  */
+/**
+ * 注册用户
+ * @api {POST} /signin 注册用户
+ * @apiDescription 注册用户
+ * @apiName SignIn
+ * @apiGroup User
+ * @apiVersion 1.0.0
+ * @apiParam {String} name 用户名
+ * @apiParam {String} password 用户密码
+ * @apiPermission admin(管理员)
+ * @apiUse UserModel
+ * @apiUse ErrorModel
+ */
 user.post('/signin', async (ctx, next) => {
   try {
     const schema = Joi.object().keys({
@@ -166,6 +179,19 @@ user.post('/signin', async (ctx, next) => {
  * @author sam.hongyang
  * @param  {} ctx
  * @param  {} next
+ */
+/**
+ * 用户登录
+ * @api {POST} /login 用户登录
+ * @apiDescription 用户登录
+ * @apiName Login
+ * @apiGroup User
+ * @apiVersion 1.0.0
+ * @apiParam {String} name 用户名
+ * @apiParam {String} password 用户密码
+ * @apiPermission admin(管理员)
+ * @apiUse UserModel
+ * @apiUse ErrorModel
  */
 user.post('/login', async (ctx, next) => {
   try {
@@ -221,6 +247,18 @@ user.post('/login', async (ctx, next) => {
  * @author sam.hongyang
  * @param  {} ctx
  * @param  {} next
+ */
+/**
+ * 查询用户信息
+ * @api {GET} /fetch/:id 查询用户信息
+ * @apiDescription 查询用户信息
+ * @apiName fetchUser
+ * @apiGroup User
+ * @apiVersion 1.0.0
+ * @apiParam {String} id 用户id
+ * @apiPermission admin(管理员)
+ * @apiUse UserModel
+ * @apiUse ErrorModel
  */
 user.get('/fetch/:id', async (ctx, next) => {
   try {
