@@ -41,7 +41,7 @@
 #### APi 文档
 - [api-doc](http://apidocjs.com/)编写
 - npm run api-doc
-- 启动服务就可以访问，[文档]()
+- 启动服务就可以访问，[文档](https://hongyanght.github.io/poetry-server/api-doc/api/index.html)
 
 #### 感谢
 - 感谢[中文诗歌（chinese-poetry）](https://github.com/chinese-poetry/chinese-poetry)的辛苦整理
