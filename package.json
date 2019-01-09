@@ -6,7 +6,8 @@
   "scripts": {
     "test": ".",
     "dev": "node app.js",
-    "initdb": "node src/db/initdb.js"
+    "initdb": "node src/db/initdb.js",
+    "api-doc": "apidoc -i src/route -o api-doc/api"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "koa-log4": "^2.3.2",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "mysql2": "^1.6.4",
