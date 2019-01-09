@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 
  * @Date: 2018-11-14 16:15:13
- * @LastEditTime: 2018-11-28 10:57:45
+ * @LastEditTime: 2019-01-09 16:35:17
  */
 const user = require('koa-router')()
 const UserController = require('../../controllers/user')
@@ -19,6 +19,55 @@ const config = require('../../../config')
  * @author sam.hongyang
  * @param  {} ctx
  * @param  {} next
+ */
+
+/**
+ * @apiDefine PageModel
+ * @apiParam {Number} pageSize 分页，每页多少条
+ * @apiParam {Number} currentPage 分页，第几页
+ */
+
+/**
+ * @apiDefine UserModel
+ * @apiSuccessExample {json} 返回数据
+ * {
+ *  code: 0,
+ *  message: 查询成功，
+ *  data: {
+ *    count: x,
+ *    rows: [{
+ *      id: xx,
+ *      name: xx,
+ *      nickname: xx,
+ *      avatar: xx,
+ *      gender: 0|1,
+ *      created_at:xx,
+ *      updated_at:xx
+ *    }]
+ *  }
+ * }
+ */
+/**
+ * @apiDefine ErrorModel
+ * @apiErrorExample {json} 错误返回
+ * {
+ *  code: 100000 用户已存在 | 200000 用户不存在 | 200001 用户密码错误,
+ *  message: 具体信息,
+ *  data: {}
+ * }
+ */
+/**
+ * 查询用户
+ * @api {GET} /user 查询用户
+ * @apiDescription 查询用户
+ * @apiName getUsers
+ * @apiGroup User
+ * @apiVersion 1.0.0
+ * @apiParam {String} name 用户名
+ * @apiPermission admin(管理员)
+ * @apiUse PageModel
+ * @apiUse UserModel
+ * @apiUse ErrorModel
  */
 user.get('/user', async (ctx, next) => {
   try {

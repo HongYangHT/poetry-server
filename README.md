@@ -38,6 +38,11 @@
 - npm init initdb
 - npm run dev
 
+#### APi 文档
+- [api-doc](http://apidocjs.com/)编写
+- npm run api-doc
+- 启动服务就可以访问，[文档]()
+
 #### 感谢
 - 感谢[中文诗歌（chinese-poetry）](https://github.com/chinese-poetry/chinese-poetry)的辛苦整理
 - 感谢[KomaBeyond 提供的转化工具(chinese-poetry-mysql)](https://github.com/KomaBeyond/chinese-poetry-mysql)
