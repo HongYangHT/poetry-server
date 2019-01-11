@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 入口文件
  * @Date: 2018-11-14 14:31:17
- * @LastEditTime: 2019-01-09 16:21:54
+ * @LastEditTime: 2019-01-11 09:24:30
  */
 const route = require('./src/route')
 const Koa = require('koa')
@@ -13,10 +13,10 @@ const staticServe = require('koa-static')
 const helmet = require('koa-helmet')
 
 const {
-   httpLogger
+  httpLogger
 } = require('./src/utils/logger')
 
-const db = require('./src/db')
+require('./src/models')
 const errorHandle = require('./src/middleware/error-handle')
 const jwt = require('koa-jwt')
 const config = require('./config')
@@ -30,17 +30,17 @@ app.use(errorHandle)
 app.use(staticServe(path.join(__dirname, 'api-doc/api')))
 
 app.use(jwt({
-   secret: config.JWT_SECRET
+  secret: config.JWT_SECRET
 }).unless({
-   path: [/\/api\/v1/, /\/login/, /\/signin/]
+  path: [/\/api\/v1/, /\/login/, /\/signin/]
 }))
 
 app.use(helmet())
 app.use(bodyParser())
 // app.use(logger())
 app.use(route.routes())
-   .use(route.allowedMethods())
-   
+  .use(route.allowedMethods())
+
 /**
  * 记录请求日志到文件中
  */

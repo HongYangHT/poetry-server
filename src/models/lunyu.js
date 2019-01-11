@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 论语表
  * @Date: 2018-11-20 17:54:46
- * @LastEditTime: 2018-11-29 17:39:29
+ * @LastEditTime: 2019-01-10 17:19:00
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -24,21 +24,20 @@ const LunYu = sequelize.define('lunyus', {
   created_at: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
-    get() {
+    get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updated_at: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
-    get() {
+    get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   }
+}, {
+  underscored: true,
+  timestamps: true
 })
-
-LunYu.sync({
-  force: false
-}).then(() => console.log('SUCCESS CREATE TABLE LUNYU')).catch(err => console.log(err))
 
 module.exports = LunYu

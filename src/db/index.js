@@ -3,15 +3,14 @@
  * @LastEditors: sam.hongyang
  * @Description: 数据库链接操作
  * @Date: 2018-11-14 17:15:32
- * @LastEditTime: 2019-01-07 16:00:53
+ * @LastEditTime: 2019-01-10 17:25:17
  */
 
 const Sequelize = require('sequelize')
 const config = require('../../config')
 const Op = Sequelize.Op
 const {
-  dbLogger,
-  outLogger
+  dbLogger
 } = require('../utils/logger')
 const operatorsAliases = {
   $eq: Op.eq,
@@ -72,15 +71,4 @@ const sequelize = new Sequelize(config.DB_DATABASE_NAME, config.DB_DATABASE_USER
   }
 })
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.')
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err)
-  })
-
-
 module.exports = sequelize
-
