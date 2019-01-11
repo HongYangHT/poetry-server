@@ -3,11 +3,10 @@
  * @LastEditors: sam.hongyang
  * @Description: 词表
  * @Date: 2018-11-20 17:48:42
- * @LastEditTime: 2018-11-29 15:57:00
+ * @LastEditTime: 2019-01-10 17:41:29
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
-const Poem = require('./poem')
 const moment = require('moment')
 
 const PoemAuthor = sequelize.define('poem_authors', {
@@ -28,24 +27,20 @@ const PoemAuthor = sequelize.define('poem_authors', {
   created_at: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
-    get() {
+    get () {
       return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updated_at: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
-    get() {
+    get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   }
+}, {
+  underscored: true,
+  timestamps: true
 })
-
-PoemAuthor.hasMany(Poem)
-Poem.belongsTo(PoemAuthor)
-
-PoemAuthor.sync({
-  force: false
-}).then(() => console.log('SUCCESS CREATE TABLE POEM AUTHOR')).catch(err => console.log(err))
 
 module.exports = PoemAuthor

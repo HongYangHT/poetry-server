@@ -1,28 +1,43 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 诗人表
- * @Date: 2018-11-20 17:24:10
- * @LastEditTime: 2019-01-10 17:41:23
+ * @Description: 用户角色
+ * @Date: 2019-01-10 15:33:22
+ * @LastEditTime: 2019-01-10 17:19:17
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
 const moment = require('moment')
 
-const PoetryAuthor = sequelize.define('poetry_authors', {
+const Role = sequelize.define('roles', {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.UUID,
     primaryKey: true,
-    autoIncrement: true
+    defaultValue: Sequelize.UUIDV1
   },
+  /**
+   * 角色名称
+   */
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    unique: true
   },
-  intro: {
+  /**
+     * 角色描述
+     */
+  roleDesc: {
     type: Sequelize.TEXT
   },
-  dynasty: {
-    type: Sequelize.CHAR(1)
+  /**
+     * 角色编码
+     * eg: 00000000
+     * 前面两位 00 superAdmin 新建角色分配权限 添加用户
+     * 中间两位 00 管理员 审核
+     * 后面两位 00 产品负责人 新建团队 新建产品 修改
+     */
+  code: {
+    type: Sequelize.STRING,
+    unique: true
   },
   created_at: {
     type: Sequelize.DATE,
@@ -43,4 +58,4 @@ const PoetryAuthor = sequelize.define('poetry_authors', {
   timestamps: true
 })
 
-module.exports = PoetryAuthor
+module.exports = Role

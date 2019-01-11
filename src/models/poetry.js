@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 诗表
  * @Date: 2018-11-20 17:21:52
- * @LastEditTime: 2018-11-27 10:04:42
+ * @LastEditTime: 2019-01-10 17:19:21
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -36,21 +36,20 @@ const Poetry = sequelize.define('poetrys', {
   created_at: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
-    get() {
+    get () {
       return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updated_at: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
-    get() {
+    get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   }
+}, {
+  underscored: true,
+  timestamps: true
 })
-
-Poetry.sync({
-  force: false
-}).then(() => console.log('SUCCESS CREATE TABLE POETRY')).catch(err => console.log(err))
 
 module.exports = Poetry
