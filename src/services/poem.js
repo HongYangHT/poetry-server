@@ -1,13 +1,13 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 
+ * @Description:
  * @Date: 2018-11-29 15:37:30
- * @LastEditTime: 2018-11-29 15:41:09
+ * @LastEditTime: 2019-01-14 09:46:29
  */
 const Poem = require('../models/poem')
 const PoemAuthor = require('../models/poem-author')
-const MappingCode = require('../utils/mapping-code')
+// const MappingCode = require('../utils/mapping-code')
 const Sequelize = require('sequelize')
 const sequelize = require('../db/index')
 
@@ -26,8 +26,8 @@ exports.promotePoem = async (params) => {
   let result = null
   try {
     result = await sequelize.query(`SELECT * FROM poems WHERE id >= (SELECT floor(RAND() * ((SELECT MAX(id) FROM
-      poems) - (SELECT MIN(id) FROM 
-      poems)) + (SELECT MIN(id) FROM 
+      poems) - (SELECT MIN(id) FROM
+      poems)) + (SELECT MIN(id) FROM
       poems))) ORDER BY id LIMIT ${size} `, {
       type: sequelize.QueryTypes.SELECT
     })

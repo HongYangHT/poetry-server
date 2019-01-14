@@ -1,12 +1,12 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 
+ * @Description:
  * @Date: 2018-11-29 15:37:43
- * @LastEditTime: 2018-11-29 15:41:52
+ * @LastEditTime: 2019-01-14 09:46:34
  */
 const PoemAuthor = require('../models/poem-author')
-const MappingCode = require('../utils/mapping-code')
+// const MappingCode = require('../utils/mapping-code')
 /**
  * @description 根据id查询
  * @param  {} params

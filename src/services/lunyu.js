@@ -1,13 +1,13 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 
+ * @Description:
  * @Date: 2018-11-29 16:40:49
- * @LastEditTime: 2018-11-29 17:40:09
+ * @LastEditTime: 2019-01-14 09:46:40
  */
 const LunYu = require('../models/lunyu')
-const MappingCode = require('../utils/mapping-code')
-const Sequelize = require('sequelize')
+// const MappingCode = require('../utils/mapping-code')
+// const Sequelize = require('sequelize')
 const sequelize = require('../db/index')
 /**
  * @description 推荐论语
@@ -19,8 +19,8 @@ exports.promoteLunYu = async (params) => {
   let result = null
   try {
     result = await sequelize.query(`SELECT * FROM lunyus WHERE id >= (SELECT floor(RAND() * ((SELECT MAX(id) FROM
-      lunyus) - (SELECT MIN(id) FROM 
-      lunyus)) + (SELECT MIN(id) FROM 
+      lunyus) - (SELECT MIN(id) FROM
+      lunyus)) + (SELECT MIN(id) FROM
       lunyus))) ORDER BY id LIMIT ${size} `, {
       type: sequelize.QueryTypes.SELECT
     })

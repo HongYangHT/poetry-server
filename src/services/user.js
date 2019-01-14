@@ -1,9 +1,9 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 
+ * @Description:
  * @Date: 2018-11-14 17:44:06
- * @LastEditTime: 2018-11-23 16:28:58
+ * @LastEditTime: 2019-01-14 09:43:40
  */
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
