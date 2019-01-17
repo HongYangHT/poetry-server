@@ -18,27 +18,31 @@ module.exports = {
   }],
   deploy: {
     production: {
-      user: 'www',
+      user: 'samhong',
       host: [{
-        host: '172.19.248.10',
+        host: '106.14.122.74',
         port: 110
       }],
-      // host: '106.14.122.74:110',
+      // host: ['106.14.122.74:110'],
+      // host: '106.14.122.74',
+      // port: 110,
       ref: 'origin/master',
       repo: 'git@github.com:HongYangHT/poetry-server.git',
-      path: '/home/www/node/poetry-server',
+      path: '/home/samhong/node/poetry-server',
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.json --env production'
     },
     dev: {
-      user: 'www',
+      user: 'samhong',
       host: [{
-        host: '172.19.248.10',
+        host: '106.14.122.74',
         port: 110
       }],
-      // host: '106.14.122.74:110',
+      // host: ['106.14.122.74:110'],
+      // host: '106.14.122.74',
+      // port: 110,
       ref: 'origin/master',
       repo: 'git@github.com:HongYangHT/poetry-server.git',
-      path: '/home/www/node/poetry-server',
+      path: '/home/samhong/node/poetry-server',
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.json --env dev',
       env: {
         NODE_ENV: 'dev'
