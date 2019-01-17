@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 用户角色
  * @Date: 2019-01-10 15:33:22
- * @LastEditTime: 2019-01-10 17:19:17
+ * @LastEditTime: 2019-01-11 11:36:33
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -41,14 +41,16 @@ const Role = sequelize.define('roles', {
   },
   created_at: {
     type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false,
     get () {
       return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updated_at: {
     type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false,
     get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }

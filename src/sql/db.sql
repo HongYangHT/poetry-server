@@ -1,7 +1,7 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
--- 创建新表
--- CREATE DATABASE `poetry` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+-- 创建数据库
+-- CREATE DATABASE `poetry` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- DROP TABLE IF EXISTS `users`;
 -- CREATE TABLE users (

@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 诗经表
  * @Date: 2018-11-20 17:54:46
- * @LastEditTime: 2019-01-10 17:19:12
+ * @LastEditTime: 2019-01-11 11:36:24
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -29,14 +29,16 @@ const ShiJing = sequelize.define('shijings', {
   },
   created_at: {
     type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false,
     get () {
       return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updated_at: {
     type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false,
     get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }

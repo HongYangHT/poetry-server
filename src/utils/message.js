@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 提示信息
  * @Date: 2018-11-23 10:08:57
- * @LastEditTime: 2018-11-23 10:09:20
+ * @LastEditTime: 2019-01-14 09:43:08
  */
 module.exports = {
   ADD_SUCCESS: '新增成功',

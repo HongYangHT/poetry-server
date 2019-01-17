@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 论语表
  * @Date: 2018-11-20 17:54:46
- * @LastEditTime: 2019-01-10 17:19:00
+ * @LastEditTime: 2019-01-11 11:37:06
  */
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
@@ -23,14 +23,16 @@ const LunYu = sequelize.define('lunyus', {
   },
   created_at: {
     type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false,
     get () {
-      return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
+      return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updated_at: {
     type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false,
     get () {
       return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss')
     }

@@ -1,9 +1,9 @@
 /*
  * @Author: sam.hongyang
  * @LastEditors: sam.hongyang
- * @Description: 
+ * @Description:
  * @Date: 2018-11-27 11:36:03
- * @LastEditTime: 2018-11-29 10:48:13
+ * @LastEditTime: 2019-01-14 09:44:09
  */
 const PoetryService = require('../services/poetry')
 const PoetryAuthorService = require('../services/poetry-author')
@@ -31,7 +31,7 @@ exports.promotePoetry = async (ctx, next) => {
  * @param  {} ctx
  * @param  {} next
  */
-exports.getAuthorByPoetry  = async (ctx, next) => {
+exports.getAuthorByPoetry = async (ctx, next) => {
   let result = null
   try {
     let { rank = 6 } = ctx.request.query

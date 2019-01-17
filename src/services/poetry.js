@@ -3,11 +3,11 @@
  * @LastEditors: sam.hongyang
  * @Description: 用于处理诗词DAO
  * @Date: 2018-11-26 17:01:02
- * @LastEditTime: 2018-11-29 15:28:16
+ * @LastEditTime: 2019-01-14 09:46:19
  */
 const Poetry = require('../models/poetry')
 const PoetryAuthor = require('../models/poetry-author')
-const MappingCode = require('../utils/mapping-code')
+// const MappingCode = require('../utils/mapping-code')
 const Sequelize = require('sequelize')
 const sequelize = require('../db/index')
 
@@ -24,11 +24,11 @@ exports.promotePoetry = async (params) => {
   let result = null
   try {
     result = await sequelize.query(`SELECT * FROM poetrys WHERE id >= (SELECT floor(RAND() * ((SELECT MAX(id) FROM
-      poetrys) - (SELECT MIN(id) FROM 
-      poetrys)) + (SELECT MIN(id) FROM 
+      poetrys) - (SELECT MIN(id) FROM
+      poetrys)) + (SELECT MIN(id) FROM
       poetrys))) ORDER BY id LIMIT ${size} `, {
-        type: sequelize.QueryTypes.SELECT
-      })
+      type: sequelize.QueryTypes.SELECT
+    })
   } catch (error) {
     throw new Error(error)
   }

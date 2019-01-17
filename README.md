@@ -53,3 +53,20 @@
 #### 感谢
 - 感谢[中文诗歌（chinese-poetry）](https://github.com/chinese-poetry/chinese-poetry)的辛苦整理
 - 感谢[KomaBeyond 提供的转化工具(chinese-poetry-mysql)](https://github.com/KomaBeyond/chinese-poetry-mysql)
+
+#### nodejs 后台开发注意事项
+- `并行代替串行` 使用Promise.all来请求接口
+```
+  let fetchData = async function(){
+  let p1 = getIdeaPromise()
+  let p2 = getGuidancePromise()
+  let [ideas, guidances] = await Promise.all([p1, p2])
+  return {ideas, guidances}
+}
+```
+
+- 使用`redis`进行缓存数据
+
+```
+scp ~/.ssh/id_rsa.pub www@106.14.122.74:/root/.ssh/authorized_keys
+```
