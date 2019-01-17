@@ -20,7 +20,7 @@ module.exports = {
     production: {
       user: 'www',
       host: [{
-        host: '106.14.122.74',
+        host: '172.19.248.10',
         port: 110
       }],
       // host: '106.14.122.74:110',
@@ -32,7 +32,7 @@ module.exports = {
     dev: {
       user: 'www',
       host: [{
-        host: '106.14.122.74',
+        host: '172.19.248.10',
         port: 110
       }],
       // host: '106.14.122.74:110',
