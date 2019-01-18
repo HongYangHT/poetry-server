@@ -67,6 +67,3 @@
 
 - 使用`redis`进行缓存数据
 
-```
-scp ~/.ssh/id_rsa.pub www@106.14.122.74:/root/.ssh/authorized_keys
-```

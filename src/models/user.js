@@ -2,7 +2,7 @@
  * @Description: model for user
  * @Author: sam.hongyang
  * @Date: 2018-11-14 16:06:50
- * @LastEditTime: 2019-01-11 11:36:11
+ * @LastEditTime: 2019-01-18 14:04:40
  * @LastEditors: sam.hongyang
  */
 const Sequelize = require('sequelize')
@@ -19,7 +19,7 @@ const User = sequelize.define('users', {
     type: Sequelize.STRING
   },
   password: {
-    type: Sequelize.UUID
+    type: Sequelize.STRING
   },
   nickname: Sequelize.STRING,
   avatar: Sequelize.STRING,
