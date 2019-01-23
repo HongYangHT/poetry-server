@@ -6,7 +6,7 @@ module.exports = {
     instance_var: '$404',
     autorestart: true,
     watch: false,
-    max_memory_restart: '300M',
+    max_memory_restart: '50M',
     env: {
       NODE_ENV: 'development'
     },
