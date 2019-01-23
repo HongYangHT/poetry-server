@@ -53,6 +53,7 @@
 #### 感谢
 - 感谢[中文诗歌（chinese-poetry）](https://github.com/chinese-poetry/chinese-poetry)的辛苦整理
 - 感谢[KomaBeyond 提供的转化工具(chinese-poetry-mysql)](https://github.com/KomaBeyond/chinese-poetry-mysql)
+- backup中的sql为备份的数据sql
 
 #### nodejs 后台开发注意事项
 - `并行代替串行` 使用Promise.all来请求接口
