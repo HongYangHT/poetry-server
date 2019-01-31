@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "poetry-server API 文档",
   "title": "poetry-server API",
-  "url": "http://localhost:8099/api/v1",
+  "url": "http://106.14.122.74:8099/api/v1",
   "forceLanguage": "zh-cn",
   "template": {
     "withCompare": true,

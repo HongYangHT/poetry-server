@@ -7,7 +7,8 @@
     "test": ".",
     "dev": "node app.js",
     "initdb": "node src/db/initdb.js",
-    "api-doc": "apidoc -i src/route -o api-doc/api"
+    "api-doc": "apidoc -i src/route -o api-doc/api",
+    "dev:start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
