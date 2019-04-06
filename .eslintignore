@@ -10,7 +10,7 @@
 /lib/util/unicode/is-combining-character.js
 test.js
 !.eslintrc.js
-/.vscode
-/api-doc
-/backup
-/logs
+/.vscode/**
+/api-doc/**
+/backup/**
+/logs/**
