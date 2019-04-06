@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 将model全部引入, 并建立相关的关系
  * @Date: 2019-01-10 15:44:16
- * @LastEditTime: 2019-01-10 17:27:23
+ * @LastEditTime: 2019-01-31 11:13:29
  */
 const Auth = require('./auth')
 const LunYu = require('./lunyu')
@@ -92,6 +92,7 @@ db.authenticate()
     db.sync({
       force: false
     })
+    return null
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err)

@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 入口文件
  * @Date: 2018-11-14 14:31:17
- * @LastEditTime: 2019-01-11 09:24:30
+ * @LastEditTime: 2019-04-06 12:30:41
  */
 const route = require('./src/route')
 const Koa = require('koa')
@@ -11,6 +11,7 @@ const bodyParser = require('koa-bodyparser')
 const staticServe = require('koa-static')
 // const logger = require('koa-logger')
 const helmet = require('koa-helmet')
+let cors = require('@koa/cors')
 
 const {
   httpLogger
@@ -37,6 +38,7 @@ app.use(jwt({
 
 app.use(helmet())
 app.use(bodyParser())
+app.use(cors())
 // app.use(logger())
 app.use(route.routes())
   .use(route.allowedMethods())
