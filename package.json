@@ -23,6 +23,7 @@
   "author": "sam.hongyang",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
     "bcrypt": "^3.0.2",
     "joi": "^14.1.0",
     "jsonwebtoken": "^8.4.0",
